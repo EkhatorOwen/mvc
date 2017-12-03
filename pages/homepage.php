@@ -41,6 +41,7 @@
         <button type="submit">Login</button>
     </div>
 
+    <h1><a href="index.php?page=accounts&action=register">Register</a></h1>
 
 </form>
 
