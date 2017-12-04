@@ -97,11 +97,9 @@ class accountsController extends http\controller
 
     static  public function test()
     {
-
         if ($_POST['btSubmit']=='Edit') {
 
         accountsController::edit();
-
 
         }
          elseif ($_POST['btSubmit']=='Delete') {
@@ -110,6 +108,25 @@ class accountsController extends http\controller
         }
 
     }
+
+    static public function update()
+    {
+        $record = new account();
+        $record->email = $_POST['email'];
+        $record->fname = $_POST['fname'];
+        $record->lname = $_POST['lname'];
+        $record->phone = $_POST['phone'];
+        $record->birthday = $_POST['birthday'];
+        $record->gender = $_POST['gender'];
+        $record->password = $_POST['password'];
+        $record->id = $_REQUEST['id'];
+        $record->save();
+        header("location:https://web.njit.edu/~oe52/mvc/index.php");
+
+
+    }
+
+
 
 
 
