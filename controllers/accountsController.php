@@ -17,19 +17,19 @@ class accountsController extends http\controller
     {
         $record = accounts::findOne($_REQUEST['id']);
         self::getTemplate('show_account', $record);
+
     }
 
     //to call the show function the url is index.php?page=task&action=list_task
 
     public static function all()
     {
-
         $records = accounts::findAll();
         self::getTemplate('all_accounts', $records);
 
     }
     //to call the show function the url is called with a post to: index.php?page=task&action=create
-    //this is a function to create new tasks
+    //this is a function to create ne,w tasks
 
     //you should check the notes on the project posted in moodle for how to use active record here
 
@@ -38,23 +38,29 @@ class accountsController extends http\controller
     {
         //https://www.sitepoint.com/why-you-should-use-bcrypt-to-hash-stored-passwords/
         //USE THE ABOVE TO SEE HOW TO USE Bcrypt
-        print_r($_POST);
+       // print_r($_POST);
+
+        self::getTemplate('register');
         //this just shows creating an account.
-        $record = new account();
-        $record->email = "kwilliam@njit.edu";
-        $record->fname = "test2";
-        $record->lname = "cccc2";
-        $record->phone = "4444444";
-        $record->birthday = "0";
-        $record->gender = "male";
-        $record->password = "12345";
-        $record->save();
+
     }
 
     //this is the function to save the user the user profile
     public static function store()
     {
-        print_r($_POST);
+      //  print_r($_POST);
+
+        $record = new account();
+        $record->email = $_POST['email'];
+        $record->fname = $_POST['fname'];
+        $record->lname = $_POST['lname'];
+        $record->phone = $_POST['phone'];
+        $record->birthday = $_POST['birthday'];
+        $record->gender = $_POST['gender'];
+        $record->password = $_POST['password'];
+        $record->save();
+
+        header("Location: https://web.njit.edu/~oe52/mvc/index.php?page=accounts&action=all");
 
     }
 
@@ -79,5 +85,30 @@ class accountsController extends http\controller
         print_r($_POST);
 
     }
+
+    public static function delete()
+    {
+        $record = accounts::findOne($_REQUEST['id']);
+        echo 'hi';
+    }
+
+    static  public function test()
+    {
+
+        if ($_POST['btSubmit']=='Edit') {
+
+        accountsController::edit();
+
+
+        }
+         elseif ($_POST['btSubmit']=='Delete') {
+
+        accountsController::delete();
+        }
+
+    }
+
+
+
 
 }
