@@ -113,7 +113,7 @@ class routes
 
         $route = new route();
         $route->http_method = 'POST';
-        $route->action = 'register';
+        $route->action = 'store';
         $route->page = 'accounts';
         $route->controller = 'accountsController';
         $route->method = 'store';
@@ -133,6 +133,14 @@ class routes
         $route->page = 'accounts';
         $route->controller = 'accountsController';
         $route->method = 'test';
+        $routes[] = $route;
+
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'update';
+        $route->page = 'accounts';
+        $route->controller = 'accountsController';
+        $route->method = 'update';
         $routes[] = $route;
 
         
