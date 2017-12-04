@@ -88,8 +88,11 @@ class accountsController extends http\controller
 
     public static function delete()
     {
-        $record = accounts::findOne($_REQUEST['id']);
-        echo 'hi';
+      $record = accounts::findOne($_REQUEST['id']);
+      $record->delete();
+      header("location:https://web.njit.edu/~oe52/mvc/index.php");
+
+
     }
 
     static  public function test()
