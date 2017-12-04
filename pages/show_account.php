@@ -16,9 +16,10 @@
 </head>
 
 <body>
-<?php $array = get_object_vars($data); print_r($array) ?>
+<?php $array = get_object_vars($data); //print_r($array);
+$string ='index.php?page=accounts&action=test&id='; $string .= $array['id']; ?>
 
-<form action="index.php?page=accounts&action=test&id="<?php echo $array['id']?> method="POST" name="form">
+<form action="<?php echo $string?>" method="POST" name="form">
 
 
 
@@ -67,7 +68,7 @@
 
 
 
-?>
+
 
 
 

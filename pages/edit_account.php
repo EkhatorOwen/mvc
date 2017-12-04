@@ -19,9 +19,12 @@
 
 <?php $array = get_object_vars($data); ?>
 
+<?php $string='https://web.njit.edu/~oe52/mvc/index.php?page=accounts&action=update&id=';$string.=$_REQUEST['id']; ?>
 
 
-<form action="" method="POST">
+
+
+<form action=<?php echo $string ?> method="POST">
 
 
 
