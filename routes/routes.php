@@ -120,14 +120,6 @@ class routes
         $routes[] = $route;
 
         $route = new route();
-        $route->http_method = 'GET';
-        $route->action = 'edit';
-        $route->page = 'accounts';
-        $route->controller = 'accountsController';
-        $route->method = 'edit';
-        $routes[] = $route;
-
-        $route = new route();
         $route->http_method = 'POST';
         $route->action = 'test';
         $route->page = 'accounts';
@@ -135,15 +127,10 @@ class routes
         $route->method = 'test';
         $routes[] = $route;
 
-        $route = new route();
-        $route->http_method = 'POST';
-        $route->action = 'update';
-        $route->page = 'accounts';
-        $route->controller = 'accountsController';
-        $route->method = 'update';
-        $routes[] = $route;
 
-        
+
+
+
 
         return $routes;
     }
