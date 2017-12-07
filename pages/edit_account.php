@@ -8,7 +8,7 @@
     <meta name="description" content="The HTML5 Herald">
     <meta name="author" content="SitePoint">
 
-    <link rel="stylesheet" href="css/styles.css?v=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -30,37 +30,37 @@
 
     <div class="container">
         <label><b>email</b></label>
-        <input type="text" value="<?php echo $array['email']?>" name="email" required>
+        <input type="text" value="<?php echo $array['email']?>" name="email" >
 
         <br>
 
         <label><b>firstname</b></label>
-        <input type="text" value="<?php echo $array['fname']?>" name="fname" required>
+        <input type="text" value="<?php echo $array['fname']?>" name="fname" >
 
         <br>
 
         <label><b>lastname</b></label>
-        <input type="text" value="<?php echo $array['lname']?>" name="lname" required>
+        <input type="text" value="<?php echo $array['lname']?>" name="lname" >
 
         <br>
 
         <label><b>phone</b></label>
-        <input type="text" value="<?php echo $array['phone'] ?>" name="phone" required>
+        <input type="text" value="<?php echo $array['phone'] ?>" name="phone" >
 
         <br>
 
         <label><b>birthday</b></label>
-        <input type="text" value="<?php echo $array['birthday']?>" name="birthday" required>
+        <input type="text" value="<?php echo $array['birthday']?>" name="birthday" >
 
         <br>
 
         <label><b>gender</b></label>
-        <input type="text" value="<?php echo $array['gender']?>" name="gender" required>
+        <input type="text" value="<?php echo $array['gender']?>" name="gender" >
 
         <br>
 
         <label><b>password</b></label>
-        <input type="text" value="<?php echo $array['password'] ?>" name="password" required>
+        <input type="text" value="<?php echo $array['password'] ?>" name="password" >
 
         <button type="submit">Update</button>
     </div>
@@ -68,10 +68,6 @@
 
 
 </form>
-
-
-
-
 
 
 

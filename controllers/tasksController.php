@@ -57,13 +57,28 @@ class tasksController extends http\controller
 
     }
 
+    static  public function test()
+    {
+        if ($_POST['btSubmit']=='Edit') {
+
+            tasksController::edit();
+
+        }
+        elseif ($_POST['btSubmit']=='Delete') {
+
+            tasksController::delete();
+        }
+
+    }
+
     //this is the delete function.  You actually return the edit form and then there should be 2 forms on that.
     //One form is the todo and the other is just for the delete button
     public static function delete()
     {
         $record = todos::findOne($_REQUEST['id']);
         $record->delete();
-        print_r($_POST);
+        header("location:https://web.njit.edu/~oe52/mvc/index.php");
+       // print_r($_POST);
 
     }
 

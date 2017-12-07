@@ -8,7 +8,7 @@
     <meta name="description" content="The HTML5 Herald">
     <meta name="author" content="SitePoint">
 
-    <link rel="stylesheet" href="css/styles.css?v=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -16,19 +16,53 @@
 </head>
 
 <body>
+<?php $array = get_object_vars($data); //print_r($array);
+$string ='index.php?page=tasks&action=test&id='; $string .= $array['id']; ?>
 
-<?php
-//this is how you print something  $data contains the record that was selected on the table.
+<form action="<?php echo $string?>" method="POST" name="form">
 
-print_r($data);
-?>
-<form action="index.php?page=tasks&action=delete&id=<?php echo $data->id; ?> " method="post" id="form1">
-    <button type="submit" form="form1" value="delete">Delete</button>
+
+
+    <div class="container">
+        <label><b>owneremail</b></label>
+        <input type="text" value="<?php echo $array['owneremail']?>" name="email" readonly>
+
+        <br>
+
+        <label><b>ownerid</b></label>
+        <input type="text" value="<?php echo $array['ownerid']?>" name="fname" readonly>
+
+        <br>
+
+        <label><b>createddate</b></label>
+        <input type="text" value="<?php echo $array['createddate']?>" name="lname" readonly>
+
+        <br>
+
+        <label><b>duedate</b></label>
+        <input type="text" value="<?php echo $array['duedate'] ?>" name="phone" readonly>
+
+        <br>
+
+        <label><b>message</b></label>
+        <input type="text" value="<?php echo $array['message']?>" name="birthday" readonly>
+
+        <br>
+
+        <label><b>isdone</b></label>
+        <input type="text" value="<?php echo $array['isdone']?>" name="gender" readonly>
+
+        <br>
+
+        <input type="submit" name="btSubmit" value="Edit">
+        <input type="submit" name="btSubmit" value="Delete">
+
+
 </form>
+</div>
+<script src="js/scripts.js">
 
-
-
-
-<script src="js/scripts.js"></script>
+</script>
 </body>
 </html>
+
