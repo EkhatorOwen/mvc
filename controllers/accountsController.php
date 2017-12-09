@@ -49,19 +49,25 @@ class accountsController extends http\controller
     public static function store()
     {
       //  print_r($_POST);
+        $user = accounts::findUserbyEmail($_REQUEST['email']);
 
-        $record = new account();
-        $record->email = $_POST['email'];
-        $record->fname = $_POST['fname'];
-        $record->lname = $_POST['lname'];
-        $record->phone = $_POST['phone'];
-        $record->birthday = $_POST['birthday'];
-        $record->gender = $_POST['gender'];
-        $record->password = $_POST['password'];
-        $record->save();
+        if($user==FALSE) {
+            $record = new account();
+            $record->email = $_POST['email'];
+            $record->fname = $_POST['fname'];
+            $record->lname = $_POST['lname'];
+            $record->phone = $_POST['phone'];
+            $record->birthday = $_POST['birthday'];
+            $record->gender = $_POST['gender'];
+            $record->password = $_POST['password'];
+            $record->save();
 
-        header("Location: https://web.njit.edu/~oe52/mvc/index.php?page=accounts&action=all");
-
+            header("Location: https://web.njit.edu/~oe52/mvc/index.php?page=accounts&action=all");
+        }
+        else
+        {
+            echo 'already registered';
+        }
     }
 
     public static function edit()
@@ -82,7 +88,33 @@ class accountsController extends http\controller
         //after you login you can use the header function to forward the user to a page that displays their tasks.
         //        $record = accounts::findUser($_POST['uname']);
 
-        print_r($_POST);
+
+        $user = accounts::findUserbyEmail($_REQUEST['email']);
+
+        if($user==FALSE)
+        {
+            echo 'user not found';
+        }
+        else
+        {
+            if($user->checkPassword($_POST['password'])== TRUE)
+             {
+                echo 'login';
+
+                session_start();
+
+                $_SESSION["userID"] = $user->id;
+
+             }
+
+             else
+             {
+                 echo 'password does not match';
+             }
+            
+               }
+
+
 
     }
 
