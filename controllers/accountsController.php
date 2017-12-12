@@ -54,6 +54,7 @@ class accountsController extends http\controller
       //  print_r($user);
 
         if($user==FALSE) {
+            session_start();
             $record = new account();
            // print_r($record);
 
@@ -63,6 +64,9 @@ class accountsController extends http\controller
             $record->fname = $_POST['fname'];
             $record->lname = $_POST['lname'];
             $record->phone = $_POST['phone'];
+
+            $_SESSION["userID"] = $user->id;
+            $_SESSION["email"] = $_POST['email'];
             //print_r($_POST['password']);
           //  $record->password = $_POST['password'];
             //turn the set password function into a static method on a utility class
@@ -70,7 +74,7 @@ class accountsController extends http\controller
            // print_r();
             $record->save();
 
-            header("Location: https://web.njit.edu/~oe52/mvc/index.php?page=accounts&action=all");
+            header("Location: https://web.njit.edu/~oe52/mvc/index.php?page=tasks&action=all");
         }
         else
         {
@@ -103,17 +107,16 @@ class accountsController extends http\controller
 
         if($user==FALSE)
         {
-            echo 'user not found';
+            $error = 'user not found';
+            self::getTemplate('error', $error);
 
         }
         else
         {
 
-
-
           if($user->checkPassword($_POST['password'])== TRUE)
              {
-                echo 'login';
+               // echo 'login';
 
                 session_start();
 
@@ -139,7 +142,7 @@ class accountsController extends http\controller
     {
       $record = accounts::findOne($_REQUEST['id']);
       $record->delete();
-      header("location:https://web.njit.edu/~oe52/mvc/index.php");
+      header("location: https://web.njit.edu/~oe52/mvc/index.php");
     }
 
     static  public function test()
@@ -158,6 +161,8 @@ class accountsController extends http\controller
 
     static public function update()
     {
+        session_start();
+
         $record = new account();
         $record->email = $_POST['email'];
         $record->fname = $_POST['fname'];
@@ -166,12 +171,26 @@ class accountsController extends http\controller
         $record->birthday = $_POST['birthday'];
         $record->gender = $_POST['gender'];
         $record->password = $_POST['password'];
-        $record->id = $_REQUEST['id'];
+        $record->id = $_SESSION['userID'];
         $record->save();
-        header("location:https://web.njit.edu/~oe52/mvc/index.php");
+
+        header("location: https://web.njit.edu/~oe52/mvc/index.php?page=tasks&action=all");
 
 
     }
+
+    static public function profile()
+    {
+        session_start();
+        $record = accounts::findUserbyEmail($_SESSION['email']);
+
+        self::getTemplate('edit_account', $record);
+
+
+    }
+
+
+
 
 
 

@@ -3,13 +3,15 @@ namespace database;
 use http\controller;
 abstract class model
 {
+
     public function save()
     {
-        if($this->validate() == FALSE) {
+       /* if($this->validate() == FALSE) {
             echo 'failed validation';
-            exit;
-        }
+            exit; }*/
+
         if ($this->id != '') {
+            $INSERT = FALSE;
             $sql = $this->update();
         } else {
             $sql = $this->insert();

@@ -167,7 +167,7 @@ class routes
         $route->method = 'store';
         $routes[] = $route;
 
-     
+
 
         $route = new route();
         $route->http_method = 'GET';
@@ -175,6 +175,14 @@ class routes
         $route->page = 'homepage';
         $route->controller = 'homepageController';
         $route->method = 'logout';
+        $routes[] = $route;
+
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'profile';
+        $route->page = 'accounts';
+        $route->controller = 'accountsController';
+        $route->method = 'profile';
         $routes[] = $route;
 
 

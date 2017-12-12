@@ -75,7 +75,7 @@ class tasksController extends http\controller
         $record->isdone = $_POST['isdone'];
         $record->ownerid = $_SESSION['userID'];
        $record->owneremail = $_SESSION['email'];
-        
+
         $record->save();
         header("Location: https://web.njit.edu/~oe52/mvc/index.php?page=tasks&action=all");
     }
@@ -100,7 +100,7 @@ class tasksController extends http\controller
     {
         $record = todos::findOne($_REQUEST['id']);
         $record->delete();
-        header("location:https://web.njit.edu/~oe52/mvc/index.php");
+        header("Location: https://web.njit.edu/~oe52/mvc/index.php?page=tasks&action=all");
        // print_r($_POST);
 
     }

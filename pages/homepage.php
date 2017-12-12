@@ -43,8 +43,7 @@
                         <div class="col-sm-8 col-sm-offset-2 text">
                             <h1><strong>To Do List Application</strong> </h1>
 
-                            <h1><a href="index.php?page=accounts&action=all">Show All Accounts</a></h1>
-                            <h1><a href="index.php?page=tasks&action=all">Show All Tasks</a></h1>
+                            
                             <div class="description">
                             	<p>
 	                            	 <strong></strong>
