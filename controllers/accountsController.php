@@ -51,22 +51,31 @@ class accountsController extends http\controller
       //  print_r($_POST);
         $user = accounts::findUserbyEmail($_REQUEST['email']);
 
+      //  print_r($user);
+
         if($user==FALSE) {
             $record = new account();
+           // print_r($record);
+
+            $record->birthday = $_POST['birthday'];
+            $record->gender = $_POST['gender'];
             $record->email = $_POST['email'];
             $record->fname = $_POST['fname'];
             $record->lname = $_POST['lname'];
             $record->phone = $_POST['phone'];
-            $record->birthday = $_POST['birthday'];
-            $record->gender = $_POST['gender'];
-            $record->password = $_POST['password'];
+            //print_r($_POST['password']);
+          //  $record->password = $_POST['password'];
+            //turn the set password function into a static method on a utility class
+            $record->password = utility\password::setPassword($_POST['password']);
+           // print_r();
             $record->save();
 
             header("Location: https://web.njit.edu/~oe52/mvc/index.php?page=accounts&action=all");
         }
         else
         {
-            echo 'already registered';
+            $error = 'already registered';
+            self::getTemplate('error', $error);
         }
     }
 
@@ -88,16 +97,21 @@ class accountsController extends http\controller
         //after you login you can use the header function to forward the user to a page that displays their tasks.
         //        $record = accounts::findUser($_POST['uname']);
 
+          //  print_r($_REQUEST['email']);
 
         $user = accounts::findUserbyEmail($_REQUEST['email']);
 
         if($user==FALSE)
         {
             echo 'user not found';
+
         }
         else
         {
-            if($user->checkPassword($_POST['password'])== TRUE)
+
+
+
+          if($user->checkPassword($_POST['password'])== TRUE)
              {
                 echo 'login';
 
@@ -105,16 +119,18 @@ class accountsController extends http\controller
 
                 $_SESSION["userID"] = $user->id;
 
+
+                 header("location: https://web.njit.edu/~oe52/mvc/index.php?page=tasks&action=all");
+
+
              }
 
              else
              {
                  echo 'password does not match';
              }
-            
+
                }
-
-
 
     }
 
@@ -123,8 +139,6 @@ class accountsController extends http\controller
       $record = accounts::findOne($_REQUEST['id']);
       $record->delete();
       header("location:https://web.njit.edu/~oe52/mvc/index.php");
-
-
     }
 
     static  public function test()

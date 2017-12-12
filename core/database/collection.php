@@ -34,15 +34,15 @@ abstract class collection
 
 
         if ($statement->rowCount() > 0) {
-                       $recordsSet = $statement->fetchAll();
-
-                    } else {
-                        $recordsSet = NULL;
-
+            $statement->setFetchMode(\PDO::FETCH_CLASS, $class);
+            $recordsSet = $statement->fetchAll();
                     }
-          return $recordsSet;
-      }
-    
+                    else
+                    {
+                        $recordsSet = NULL;
+                    }
+                        return $recordsSet;
+            }
 
     static public function findOne($id)
     {

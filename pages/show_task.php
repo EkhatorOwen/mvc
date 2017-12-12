@@ -16,7 +16,7 @@
 </head>
 
 <body>
-<?php $array = get_object_vars($data); //print_r($array);
+<?php  $array = get_object_vars($data);
 $string ='index.php?page=tasks&action=test&id='; $string .= $array['id']; ?>
 
 <form action="<?php echo $string?>" method="POST" name="form">
@@ -24,33 +24,25 @@ $string ='index.php?page=tasks&action=test&id='; $string .= $array['id']; ?>
 
 
     <div class="container">
-        <label><b>owneremail</b></label>
-        <input type="text" value="<?php echo $array['owneremail']?>" name="email" readonly>
 
-        <br>
-
-        <label><b>ownerid</b></label>
-        <input type="text" value="<?php echo $array['ownerid']?>" name="fname" readonly>
-
-        <br>
 
         <label><b>createddate</b></label>
-        <input type="text" value="<?php echo $array['createddate']?>" name="lname" readonly>
+        <input type="text" value="<?php echo $array['createddate']?>" name="createddate" readonly>
 
         <br>
 
         <label><b>duedate</b></label>
-        <input type="text" value="<?php echo $array['duedate'] ?>" name="phone" readonly>
+        <input type="text" value="<?php echo $array['duedate'] ?>" name="duedate" readonly>
 
         <br>
 
         <label><b>message</b></label>
-        <input type="text" value="<?php echo $array['message']?>" name="birthday" readonly>
+        <input type="text" value="<?php echo $array['message']?>" name="message" readonly>
 
         <br>
 
         <label><b>isdone</b></label>
-        <input type="text" value="<?php echo $array['isdone']?>" name="gender" readonly>
+        <input type="text" value="<?php echo $array['isdone']?>" name="isdone" readonly>
 
         <br>
 

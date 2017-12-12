@@ -22,8 +22,11 @@ class tasksController extends http\controller
 
     public static function all()
     {
-        $records = todos::findAll();
-        self::getTemplate('all_tasks', $records);
+        session_start();
+
+        $result = todos::findTasksbyID($_SESSION["userID"]);
+        self::getTemplate('all_tasks',$result);
+
 
     }
     //to call the show function the url is called with a post to: index.php?page=task&action=create
@@ -48,13 +51,10 @@ class tasksController extends http\controller
     //this would be for the post for sending the task edit form
     public static function store()
     {
-
-
         $record = todos::findOne($_REQUEST['id']);
         $record->body = $_REQUEST['body'];
         $record->save();
         print_r($_POST);
-
     }
 
     static  public function test()

@@ -156,6 +156,16 @@ class routes
 
         return $routes;
     }
+
+    public static function create($http_method,$action,$page,$controller,$method) {
+        $route = new route();
+        $route->http_method = $http_method;
+        $route->action = $action;
+        $route->page = $page;
+        $route->controller = $controller;
+        $route->method = $method;
+    }
+
 }
 
 //this is the route prototype object  you would make a factory to return this
