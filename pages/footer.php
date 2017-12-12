@@ -5,8 +5,8 @@
             Menu
         </a>
         <a href="#" class="list-group-item list-group-item-action">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action">Create Task</a>
-        <a href="#" class="list-group-item list-group-item-action">Log Out</a>
+        <a href="https://web.njit.edu/~oe52/mvc/index.php?page=tasks&action=create" class="list-group-item list-group-item-action">Create Task</a>
+        <a href="https://web.njit.edu/~oe52/mvc/index.php?page=homepage&action=logout" class="list-group-item list-group-item-action">Log Out</a>
 
     </div>
 

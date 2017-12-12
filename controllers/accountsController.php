@@ -118,6 +118,7 @@ class accountsController extends http\controller
                 session_start();
 
                 $_SESSION["userID"] = $user->id;
+                $_SESSION["email"] = $user->email;
 
 
                  header("location: https://web.njit.edu/~oe52/mvc/index.php?page=tasks&action=all");

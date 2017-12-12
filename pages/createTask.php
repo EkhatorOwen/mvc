@@ -1,15 +1,10 @@
 <?php include 'header.php' ?>
 
-<body>
 
-<?php $array = get_object_vars($data); ?>
-
-<?php $string='https://web.njit.edu/~oe52/mvc/index.php?page=tasks&action=update&id=';$string.=$_REQUEST['id']; ?>
+<article>
 
 
-
-
-<form action="<?php echo $string?>" method="POST" name="form">
+<form action="https://web.njit.edu/~oe52/mvc/index.php?page=tasks&action=store" method="POST" name="form">
 
 
 
@@ -19,24 +14,28 @@
         <br>
 
         <label><b>createddate</b></label>
-        <input type="text" value="Create date.." name="createddate" >
+        <input type="text" value="" name="createddate" >
 
         <br>
 
         <label><b>duedate</b></label>
-        <input type="text" value="due date.." name="duedate" >
+        <input type="text" value="" name="duedate" >
+
+
+      
+
 
 
         <br>
+
         <label><b>message</b></label>
 
-        <textarea name="message" cols="50" rows="5">task.. </textarea>
-
+        <textarea name="message" cols="50" rows="5"> </textarea>
 
         <br>
 
         <label><b>isdone</b></label>
-        <input type="text" value="done..?" name="isdone" >
+        <input type="text" value="" name="isdone" >
 
         <br>
 
@@ -45,6 +44,8 @@
 
 
 </form>
+
+    </article>
 
 
 <?php include 'footer.php' ?>
