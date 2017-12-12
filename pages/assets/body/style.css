@@ -2,12 +2,12 @@
 body {
     font: 24px Helvetica;
     background: #999999;
-    height: 100vh;
+
 
 }
 
 #main {
-    min-height: 500px;
+    min-height: calc(125vh - 40vh);
     margin: 0;
     padding: 0;
     display: flex;

@@ -31,33 +31,29 @@
 
 
     <div class="container">
-        <label><b>owneremail</b></label>
-        <input type="text" value="<?php echo $array['owneremail']?>" name="email" >
-
-        <br>
-
-        <label><b>ownerid</b></label>
-        <input type="text" value="<?php echo $array['ownerid']?>" name="fname" >
+        <h1>Update Task</h1>
 
         <br>
 
         <label><b>createddate</b></label>
-        <input type="text" value="<?php echo $array['createddate']?>" name="lname" >
+        <input type="text" value="<?php echo $array['createddate']?>" name="createddate" >
 
         <br>
 
         <label><b>duedate</b></label>
-        <input type="text" value="<?php echo $array['duedate'] ?>" name="phone" >
+        <input type="text" value="<?php echo $array['duedate'] ?>" name="duedate" >
+
 
         <br>
-
         <label><b>message</b></label>
-        <input type="text" value="<?php echo $array['message']?>" name="birthday" >
+
+        <textarea name="message" cols="50" rows="5"><?php echo $array['message']?> </textarea>
+
 
         <br>
 
         <label><b>isdone</b></label>
-        <input type="text" value="<?php echo $array['isdone']?>" name="gender" >
+        <input type="text" value="<?php echo $array['isdone']?>" name="isdone" >
 
         <br>
 
