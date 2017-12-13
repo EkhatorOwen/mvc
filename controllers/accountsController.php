@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kwilliams
- * Date: 11/27/17
- * Time: 5:32 PM
- */
+
 
 
 //each page extends controller and the index.php?page=tasks causes the controller to be called
@@ -24,8 +19,8 @@ class accountsController extends http\controller
 
     public static function all()
     {
-        $records = accounts::findAll();
-        self::getTemplate('all_accounts', $records);
+       // $records = accounts::findAll();
+       // self::getTemplate('all_accounts', $records);
 
     }
     //to call the show function the url is called with a post to: index.php?page=task&action=create
@@ -49,32 +44,28 @@ class accountsController extends http\controller
     public static function store()
     {
       //  print_r($_POST);
-        $user = accounts::findUserbyEmail($_REQUEST['email']);
-
-      //  print_r($user);
+        $user = accounts::findUserbyEmail($_POST['email']);
 
         if($user==FALSE) {
+
             session_start();
             $record = new account();
            // print_r($record);
-
             $record->birthday = $_POST['birthday'];
             $record->gender = $_POST['gender'];
             $record->email = $_POST['email'];
             $record->fname = $_POST['fname'];
             $record->lname = $_POST['lname'];
             $record->phone = $_POST['phone'];
-
-            $_SESSION["userID"] = $user->id;
-            $_SESSION["email"] = $_POST['email'];
-            //print_r($_POST['password']);
-          //  $record->password = $_POST['password'];
-            //turn the set password function into a static method on a utility class
             $record->password = utility\password::setPassword($_POST['password']);
-           // print_r();
             $record->save();
+            $user = accounts::findUserbyEmail($_POST['email']);
 
-            header("Location: https://web.njit.edu/~oe52/mvc/index.php?page=tasks&action=all");
+
+            $_SESSION["email"] = $user->email;
+            $_SESSION["userID"] = $user->id;
+
+           header("Location:https://web.njit.edu/~oe52/mvc/index.php?page=tasks&action=all");
         }
         else
         {
@@ -131,7 +122,9 @@ class accountsController extends http\controller
 
              else
              {
-                 echo 'password does not match';
+
+                 $error = 'password does not match';
+                 self::getTemplate('error', $error);
              }
 
                }

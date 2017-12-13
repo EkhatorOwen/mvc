@@ -43,7 +43,7 @@
                         <div class="col-sm-8 col-sm-offset-2 text">
                             <h1><strong>To Do List Application</strong> </h1>
 
-                            
+
                             <div class="description">
                             	<p>
 	                            	 <strong></strong>

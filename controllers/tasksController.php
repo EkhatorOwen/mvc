@@ -14,6 +14,7 @@ class tasksController extends http\controller
     //to call the show function the url is index.php?page=task&action=show
     public static function show()
     {
+        session_start();
         $record = todos::findOne($_REQUEST['id']);
         self::getTemplate('show_task', $record);
     }
@@ -28,12 +29,11 @@ class tasksController extends http\controller
 
         if($result==true) {
 
-
             self::getTemplate('all_tasks', $result);
         }
         else
         {
-            self::getTemplate('createTask');
+            self::getTemplate('create_task');
         }
 
 
@@ -45,7 +45,9 @@ class tasksController extends http\controller
 
     public static function create()
     {
-        self::getTemplate('createTask');
+        session_start();
+
+        self::getTemplate('create_task');
 
 
     }
@@ -53,6 +55,7 @@ class tasksController extends http\controller
     //this is the function to view edit record form
     public static function edit()
     {
+        session_start();
         $record = todos::findOne($_REQUEST['id']);
 
         $result1 = get_object_vars($record);

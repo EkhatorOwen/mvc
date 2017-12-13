@@ -8,6 +8,7 @@ class accounts extends \database\collection
     //Don't forget to return the object see findOne in the collection class
     public static function findUserbyID($userid)
     {
+
     }
 
 

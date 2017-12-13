@@ -16,7 +16,7 @@
 
     <header>
 
-        <h1>Hello, <?php $records = \accounts::findUserbyemail($_SESSION['email']);  $record = $records[0];  echo $record->fname;?>!</h1>
+        <h1>Hello, <?php $records = \accounts::findOne($_SESSION['userID']); /*print_r($records); */ echo $records->fname;?>!</h1>
 
     </header>
 
