@@ -54,9 +54,7 @@ $string ='index.php?page=accounts&action=test&id='; $string .= $array['id']; ?>
 
         <br>
 
-        <label><b>password</b></label>
-        <input type="text" value="<?php echo $array['password'] ?>" name="password" readonly>
-        <br>
+        
         <input type="submit" name="btSubmit" value="Edit">
         <input type="submit" name="btSubmit" value="Delete">
     </div>
