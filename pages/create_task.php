@@ -14,11 +14,11 @@
         <br>
 
         <label><b>createddate</b></label>
-        <input type="text" value="" name="createddate" >
+        <input type="text" value="<?php date_default_timezone_set("America/New_York");  echo  date("Y-m-d h:i:s") ?>" name="createddate" readonly>
 
         <br>
 
-        <label><b>duedate</b></label>
+        <label><b>duedate(Y-m-d h:i:s)</b></label>
         <input type="text" value="" name="duedate" >
         
 
