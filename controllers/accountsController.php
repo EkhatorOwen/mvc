@@ -43,36 +43,50 @@ class accountsController extends http\controller
     //this is the function to save the user the user profile
     public static function store()
     {
-      //  print_r($_POST);
-        $user = accounts::findUserbyEmail($_POST['email']);
+        //  print_r($_POST);
 
-        if($user==FALSE) {
+        if (utility\validation::password($_POST['password']) == false) {
+            echo 'Password must be 6 characters';
+            exit;
+        }
 
-            session_start();
-            $record = new account();
-           // print_r($record);
-            $record->birthday = $_POST['birthday'];
-            $record->gender = $_POST['gender'];
-            $record->email = $_POST['email'];
-            $record->fname = $_POST['fname'];
-            $record->lname = $_POST['lname'];
-            $record->phone = $_POST['phone'];
-            $record->password = utility\password::setPassword($_POST['password']);
-            $record->save();
+        if (utility\validation::email($_POST['email']) == false) {
+            echo 'The email address provided is not valid';
+            exit;
+        }
+        if (utility\validation::field($_POST['fname'])||utility\validation::field($_POST['lname']) == false){
+            echo 'The email address provided is not valid';
+            exit;
+        }
+
             $user = accounts::findUserbyEmail($_POST['email']);
 
+            if ($user == FALSE) {
 
-            $_SESSION["email"] = $user->email;
-            $_SESSION["userID"] = $user->id;
+                session_start();
+                $record = new account();
+                // print_r($record);
+                $record->birthday = $_POST['birthday'];
+                $record->gender = $_POST['gender'];
+                $record->email = $_POST['email'];
+                $record->fname = $_POST['fname'];
+                $record->lname = $_POST['lname'];
+                $record->phone = $_POST['phone'];
+                $record->password = utility\password::setPassword($_POST['password']);
+                $record->save();
+                $user = accounts::findUserbyEmail($_POST['email']);
 
-           header("Location:https://web.njit.edu/~oe52/mvc/index.php?page=tasks&action=all");
+
+                $_SESSION["email"] = $user->email;
+                $_SESSION["userID"] = $user->id;
+
+                header("Location:https://web.njit.edu/~oe52/mvc/index.php?page=tasks&action=all");
+            } else {
+                $error = 'already registered';
+                self::getTemplate('error', $error);
+            }
         }
-        else
-        {
-            $error = 'already registered';
-            self::getTemplate('error', $error);
-        }
-    }
+
 
     public static function edit()
     {
