@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kwilliams
- * Date: 11/27/17
- * Time: 5:32 PM
- */
+
 
 
 //each page extends controller and the index.php?page=tasks causes the controller to be called
@@ -83,19 +78,7 @@ class tasksController extends http\controller
         header("Location: https://web.njit.edu/~oe52/mvc/index.php?page=tasks&action=all");
     }
 
-    static  public function test()
-    {
-        if ($_POST['btSubmit']=='Edit') {
 
-            tasksController::edit();
-
-        }
-        elseif ($_POST['btSubmit']=='Delete') {
-
-            tasksController::delete();
-        }
-
-    }
 
     //this is the delete function.  You actually return the edit form and then there should be 2 forms on that.
     //One form is the todo and the other is just for the delete button
@@ -121,6 +104,6 @@ class tasksController extends http\controller
 
     }
 
-   
+
 
 }
