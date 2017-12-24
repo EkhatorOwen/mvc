@@ -55,7 +55,7 @@ class accountsController extends http\controller
             exit;
         }
         if (utility\validation::field($_POST['fname'])||utility\validation::field($_POST['lname']) == false){
-            echo 'The email address provided is not valid';
+            echo 'Firstname or Lastname field must be at least one character';
             exit;
         }
 
